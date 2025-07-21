@@ -12,4 +12,5 @@ export type Senryu = {
   upperPart: Chunk[];
   middlePart: Chunk[];
   lowerPart: Chunk[];
+  ids: string[];
 }

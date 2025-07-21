@@ -15,5 +15,8 @@ export const loadSenryu = (ids: string[]): Senryu => {
     throw new Error('Given SenryuWords are not enough to build a valid senryu');
   }
 
-  return senryu;
+  return {
+    ...senryu,
+    ids,
+  };
 }

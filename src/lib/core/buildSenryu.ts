@@ -24,5 +24,6 @@ export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
     upperPart,
     middlePart,
     lowerPart,
+    ids: senryuWords.map(word => word.id),
   }
 }

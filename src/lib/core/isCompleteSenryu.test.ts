@@ -16,7 +16,8 @@ describe('isCompleteSenryu', () => {
       lowerPart: [
         { word: '本田', mora: 3 },
         { word: '未央', mora: 2 }
-      ]
+      ],
+      ids: ['1', '2', '3']
     };
     expect(isCompleteSenryu(senryu)).toBe(true);
   });
@@ -33,7 +34,8 @@ describe('isCompleteSenryu', () => {
       lowerPart: [
         { word: '本田', mora: 3 },
         { word: '未央', mora: 2 }
-      ]
+      ],
+      ids: ['1', '2', '3']
     };
     expect(isCompleteSenryu(senryu)).toBe(false);
   });
@@ -50,7 +52,8 @@ describe('isCompleteSenryu', () => {
       lowerPart: [
         { word: '本田', mora: 3 },
         { word: '未央', mora: 2 }
-      ]
+      ],
+      ids: ['1', '2', '3']
     };
     expect(isCompleteSenryu(senryu)).toBe(false);
   });
@@ -67,7 +70,8 @@ describe('isCompleteSenryu', () => {
       ],
       lowerPart: [
         { word: '本田', mora: 3 }
-      ]
+      ],
+      ids: ['1', '2', '3']
     };
     expect(isCompleteSenryu(senryu)).toBe(false);
   });
@@ -76,7 +80,8 @@ describe('isCompleteSenryu', () => {
     const senryu: Senryu = {
       upperPart: [],
       middlePart: [],
-      lowerPart: []
+      lowerPart: [],
+      ids: []
     };
     expect(isCompleteSenryu(senryu)).toBe(false);
   });

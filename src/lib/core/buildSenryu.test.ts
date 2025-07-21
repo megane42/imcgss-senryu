@@ -44,6 +44,12 @@ describe('buildSenryu', () => {
       { word: "本田", mora: 3 },
       { word: "未央", mora: 2 }
     ]);
+
+    expect(result.ids).toEqual([
+      'test-1',
+      'test-2',
+      'test-3'
+    ]);
   });
 
   it('should build incomplete senryu when given senryuWords cannot form perfect 575', () => {
@@ -78,5 +84,10 @@ describe('buildSenryu', () => {
 
     // Lower part empty
     expect(result.lowerPart).toEqual([]);
+
+    expect(result.ids).toEqual([
+      'test-1',
+      'test-2',
+    ]);
   });
 });
