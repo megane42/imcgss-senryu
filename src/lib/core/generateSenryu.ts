@@ -1,4 +1,4 @@
-import type { Chunk, Senryu, SenryuWord } from "../types/senryu";
+import type { Senryu, SenryuWord } from "../types/senryu";
 import { shuffle } from "../utils/shuffle";
 import { allSenryuWords } from "../constants/allSenryuWords";
 import { buildSenryu } from "./buildSenryu";
@@ -30,5 +30,6 @@ export const generateSenryu = (): Senryu => {
         return senryu
       }
     }
+    // eslint-disable-next-line no-constant-condition
   } while (true)
 }
