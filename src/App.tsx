@@ -1,4 +1,4 @@
-import '@/App.css'
+import styles from './App.module.css'
 import { useState, useEffect } from 'react'
 import { generateSenryu } from '@/lib/core/generateSenryu'
 import { loadSenryu } from '@/lib/core/loadSenryu'
@@ -54,7 +54,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <h1>デレマス川柳</h1>
       <button onClick={handleGenerateSenryu}>川柳を生成</button>
       {senryu && (
@@ -74,7 +74,7 @@ function App() {
           <p>{formatSenryuPart(senryu.lowerPart)}</p>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
