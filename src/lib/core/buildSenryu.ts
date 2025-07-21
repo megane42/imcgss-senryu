@@ -1,9 +1,9 @@
-import type { Senryu, SenryuWord } from "../types/senryu";
 import { calculateTotalMora } from "./calculateTotalMora";
+import type { Senryu, SenryuWord } from "../types/senryu";
 
 export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
   const chunks = senryuWords.map(c => c.chunks).flat()
-  
+
   const upperPart:  Senryu["upperPart"] = []
   const middlePart: Senryu["middlePart"] = []
   const lowerPart:  Senryu["lowerPart"] = []
@@ -25,4 +25,4 @@ export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
     middlePart,
     lowerPart,
   }
-} 
+}

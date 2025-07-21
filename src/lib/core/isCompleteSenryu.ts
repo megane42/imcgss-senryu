@@ -1,5 +1,5 @@
-import type { Senryu } from "../types/senryu";
 import { calculateTotalMora } from "./calculateTotalMora";
+import type { Senryu } from "../types/senryu";
 
 export const isCompleteSenryu = (senryu: Senryu): boolean => {
   return (
