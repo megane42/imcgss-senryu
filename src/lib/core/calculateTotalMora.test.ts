@@ -12,4 +12,4 @@ describe('calculateTotalMora', () => {
       { word: "千夏", mora: 3 }
     ])).toBe(7);
   });
-}); 
+});

@@ -5,4 +5,4 @@ export const calculateTotalMora = (chunks: Chunk[]): number => (
     (total, chunk) => total + chunk.mora,
     0
   )
-) 
+)

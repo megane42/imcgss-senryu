@@ -4,9 +4,9 @@ import type { Senryu, SenryuWord } from "@/lib/types/senryu";
 export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
   const chunks = senryuWords.map(c => c.chunks).flat()
 
-  const upperPart: Senryu["upperPart"] = []
+  const upperPart:  Senryu["upperPart"]  = []
   const middlePart: Senryu["middlePart"] = []
-  const lowerPart: Senryu["lowerPart"] = []
+  const lowerPart:  Senryu["lowerPart"]  = []
 
   for (const chunk of chunks) {
     if (calculateTotalMora(upperPart) < 5) {

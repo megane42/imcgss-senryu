@@ -16,4 +16,4 @@ export const loadSenryu = (ids: string[]): Senryu => {
   }
 
   return senryu;
-} 
+}

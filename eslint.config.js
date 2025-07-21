@@ -32,6 +32,9 @@ export default tseslint.config([
     },
     rules: {
       'indent': ['error', 2],
+      'no-multi-spaces': 'off',
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { 'max': 2 }],
       'import/order': [
         'error',
         {

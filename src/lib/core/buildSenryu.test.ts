@@ -79,4 +79,4 @@ describe('buildSenryu', () => {
     // Lower part empty
     expect(result.lowerPart).toEqual([]);
   });
-}); 
+});

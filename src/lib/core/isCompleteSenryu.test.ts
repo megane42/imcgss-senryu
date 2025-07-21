@@ -80,4 +80,4 @@ describe('isCompleteSenryu', () => {
     };
     expect(isCompleteSenryu(senryu)).toBe(false);
   });
-}); 
+});

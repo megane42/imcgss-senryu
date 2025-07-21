@@ -29,4 +29,4 @@ describe('loadSenryu', () => {
       loadSenryu(['c1', 'i112']);
     }).toThrow("Given SenryuWords are not enough to build a valid senryu");
   });
-}); 
+});

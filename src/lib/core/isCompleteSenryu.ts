@@ -7,4 +7,4 @@ export const isCompleteSenryu = (senryu: Senryu): boolean => {
     calculateTotalMora(senryu.middlePart) === 7 &&
     calculateTotalMora(senryu.lowerPart) === 5
   );
-}; 
+};
