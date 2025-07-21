@@ -4,6 +4,7 @@ export type Chunk = {
 }
 
 export type SenryuWord = {
+  id: string;
   chunks: Chunk[];
 }
 

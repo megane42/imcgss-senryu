@@ -1,5 +1,5 @@
 import type { SenryuWord } from '../types/senryu';
 
 export const commons: SenryuWord[] = [
-  { chunks: [{ word: "かわいいね", mora: 5 }] },
+  { id: "c1", chunks: [{ word: "かわいいね", mora: 5 }] },
 ];
