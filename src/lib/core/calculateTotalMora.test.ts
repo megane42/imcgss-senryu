@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calculateTotalMora } from './calculateTotalMora';
+import { calculateTotalMora } from '@/lib/core/calculateTotalMora';
 
 describe('calculateTotalMora', () => {
   it('should return 0 for empty array', () => {

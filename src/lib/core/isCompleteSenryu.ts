@@ -1,5 +1,5 @@
-import { calculateTotalMora } from "./calculateTotalMora";
-import type { Senryu } from "../types/senryu";
+import { calculateTotalMora } from "@/lib/core/calculateTotalMora";
+import type { Senryu } from "@/lib/types/senryu";
 
 export const isCompleteSenryu = (senryu: Senryu): boolean => {
   return (

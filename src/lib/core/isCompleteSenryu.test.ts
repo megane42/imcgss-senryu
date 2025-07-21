@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { isCompleteSenryu } from './isCompleteSenryu';
-import type { Senryu } from '../types/senryu';
+import { isCompleteSenryu } from '@/lib/core/isCompleteSenryu';
+import type { Senryu } from '@/lib/types/senryu';
 
 describe('isCompleteSenryu', () => {
   it('should return true for senryu with 5-7-5 mora structure', () => {

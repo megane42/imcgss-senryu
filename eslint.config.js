@@ -22,7 +22,16 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.app.json',
+        },
+      },
+    },
     rules: {
+      'indent': ['error', 2],
       'import/order': [
         'error',
         {
@@ -37,6 +46,7 @@ export default tseslint.config([
           'alphabetize': { order: 'asc', caseInsensitive: true },
         },
       ],
+      'import/no-relative-packages': 'error',
     },
   },
 ])

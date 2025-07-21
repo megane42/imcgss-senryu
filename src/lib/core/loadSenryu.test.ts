@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { loadSenryu } from './loadSenryu';
+import { loadSenryu } from '@/lib/core/loadSenryu';
 
 describe('loadSenryu', () => {
   it('should load senryu from multiple IDs', () => {
-    const result = loadSenryu(['i74', 'i44', 'c1']);    
-    
+    const result = loadSenryu(['i74', 'i44', 'c1']);
+
     expect(result.upperPart).toEqual([
       { word: "佐久間", mora: 3 },
       { word: "まゆ", mora: 2 }

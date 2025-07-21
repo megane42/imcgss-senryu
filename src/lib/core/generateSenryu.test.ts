@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { generateSenryu } from "./generateSenryu";
-import type { Senryu } from "../types/senryu";
+import { generateSenryu } from "@/lib/core/generateSenryu";
+import type { Senryu } from "@/lib/types/senryu";
 
 const calcMora = (chunks: { mora: number }[]) =>
   chunks.reduce((sum, c) => sum + c.mora, 0);

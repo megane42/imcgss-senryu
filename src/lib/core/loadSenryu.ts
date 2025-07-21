@@ -1,7 +1,7 @@
-import { buildSenryu } from "./buildSenryu";
-import { isCompleteSenryu } from "./isCompleteSenryu";
-import { allSenryuWords } from "../constants/allSenryuWords";
-import type { Senryu } from "../types/senryu";
+import { allSenryuWords } from "@/lib/constants/allSenryuWords";
+import { buildSenryu } from "@/lib/core/buildSenryu";
+import { isCompleteSenryu } from "@/lib/core/isCompleteSenryu";
+import type { Senryu } from "@/lib/types/senryu";
 
 export const loadSenryu = (ids: string[]): Senryu => {
   const words = ids.map(id => {

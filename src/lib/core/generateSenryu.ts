@@ -1,9 +1,9 @@
-import { buildSenryu } from "./buildSenryu";
-import { calculateTotalMora } from "./calculateTotalMora";
-import { isCompleteSenryu } from "./isCompleteSenryu";
-import { allSenryuWords } from "../constants/allSenryuWords";
-import { shuffle } from "../utils/shuffle";
-import type { Senryu, SenryuWord } from "../types/senryu";
+import { allSenryuWords } from "@/lib/constants/allSenryuWords";
+import { buildSenryu } from "@/lib/core/buildSenryu";
+import { calculateTotalMora } from "@/lib/core/calculateTotalMora";
+import { isCompleteSenryu } from "@/lib/core/isCompleteSenryu";
+import { shuffle } from "@/lib/utils/shuffle";
+import type { Senryu, SenryuWord } from "@/lib/types/senryu";
 
 const isOverload = (senryu: Senryu): boolean => {
   return (

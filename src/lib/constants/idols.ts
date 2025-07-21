@@ -1,4 +1,4 @@
-import type { SenryuWord } from '../types/senryu';
+import type { SenryuWord } from '@/lib/types/senryu';
 
 export const idols: SenryuWord[] = [
   {
