@@ -10,7 +10,7 @@ export const decodeIds = (encoded: string): string[] => {
 
     const decoded = atob(padded)
     return decoded.split(',').map(id => id.trim())
-  } catch (error) {
+  } catch {
     throw new Error('Invalid encoded string')
   }
 }
