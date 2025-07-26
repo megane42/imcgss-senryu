@@ -16,21 +16,21 @@ export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu, error, onPush })
 
   return (
     <>
-        <div className={styles.card}>
-            {!senryu && 
-            <GenerateButton onClick={onPush} />
-            }
-            {error && <ErrorMessage error={error} />}
-            {senryu && (
-            <>
-                <div className={styles.senryuText}>
-                <p className={styles.line}>{formatSenryuPart(senryu.upperPart)}</p>
-                <p className={styles.line}>{formatSenryuPart(senryu.middlePart)}</p>
-                <p className={styles.line}>{formatSenryuPart(senryu.lowerPart)}</p>
-                </div>
-            </>
-            )}
-        </div>
+      <div className={styles.card}>
+        {!senryu && 
+        <GenerateButton onClick={onPush} />
+        }
+        {error && <ErrorMessage error={error} />}
+        {senryu && (
+        <>
+          <div className={styles.senryuText}>
+            <p className={styles.line}>{formatSenryuPart(senryu.upperPart)}</p>
+            <p className={styles.line}>{formatSenryuPart(senryu.middlePart)}</p>
+            <p className={styles.line}>{formatSenryuPart(senryu.lowerPart)}</p>
+          </div>
+        </>
+        )}
+      </div>
     </>
   )
 }
