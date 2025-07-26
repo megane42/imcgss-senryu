@@ -1,4 +1,3 @@
-import { ButtonGroup } from '@/components/ButtonGroup'
 import { ErrorMessage } from '@/components/ErrorMessage'
 import { GenerateButton } from '@/components/GenerateButton'
 import { Logo } from '@/components/Logo'
@@ -16,14 +15,16 @@ function App() {
         <Logo />
       </header>
       <main className={styles.main}>
-        <ButtonGroup>
+        {!senryu && 
           <GenerateButton onGenerate={handleGenerateSenryu} />
-          {senryu && <TweetButton senryu={senryu} />}
-        </ButtonGroup>
-
+        }
         {error && <ErrorMessage error={error} />}
-
-        {senryu && <SenryuDisplay senryu={senryu} />}
+        {senryu && (
+          <>
+            <SenryuDisplay senryu={senryu} />
+            <TweetButton senryu={senryu} />
+          </>
+        )}
       </main>
     </div>
   )
