@@ -1,16 +1,13 @@
-import { Button } from './Button'
 import styles from './GenerateButton.module.css'
 
 interface GenerateButtonProps {
-    onGenerate: () => void
+    onClick: () => void
 }
 
-export const GenerateButton: React.FC<GenerateButtonProps> = ({ onGenerate }) => {
+export const GenerateButton: React.FC<GenerateButtonProps> = ({ onClick }) => {
   return (
-    <div className={styles.container}>
-      <Button onClick={onGenerate} variant="primary">
-        川柳を生成
-      </Button>
-    </div>
+    <button onClick={onClick}>
+      川柳を生成
+    </button>
   )
 }

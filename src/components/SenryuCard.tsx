@@ -18,7 +18,7 @@ export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu, error, onPush })
     <>
         <div className={styles.card}>
             {!senryu && 
-            <GenerateButton onGenerate={onPush} />
+            <GenerateButton onClick={onPush} />
             }
             {error && <ErrorMessage error={error} />}
             {senryu && (

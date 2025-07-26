@@ -1,5 +1,4 @@
 import { encodeIds } from '@/lib/utils/encodeIds'
-import { Button } from './Button'
 import styles from './TweetButton.module.css'
 import type { Senryu } from '@/lib/types/senryu'
 
@@ -21,10 +20,8 @@ export const TweetButton: React.FC<TweetButtonProps> = ({ senryu }) => {
   }
 
   return (
-    <div className={styles.container}>
-      <Button onClick={handleTweet} variant="secondary">
-        ツイート
-      </Button>
-    </div>
+    <button onClick={handleTweet}>
+      ツイート
+    </button>
   )
 }
