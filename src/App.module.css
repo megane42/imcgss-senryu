@@ -18,5 +18,17 @@ body {
 
 .main {
     display: flex;
+    flex-direction: column;
+}
+
+.senryuCardContainer {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.tweetButtonContainer {
+    margin-bottom: 40px;
+    display: flex;
     justify-content: center;
 }
