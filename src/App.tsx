@@ -12,15 +12,19 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Logo />
-      <ButtonGroup>
-        <GenerateButton onGenerate={handleGenerateSenryu} />
-        {senryu && <TweetButton senryu={senryu} />}
-      </ButtonGroup>
+      <header className={styles.header}>
+        <Logo />
+      </header>
+      <main className={styles.main}>
+        <ButtonGroup>
+          <GenerateButton onGenerate={handleGenerateSenryu} />
+          {senryu && <TweetButton senryu={senryu} />}
+        </ButtonGroup>
 
-      {error && <ErrorMessage error={error} />}
+        {error && <ErrorMessage error={error} />}
 
-      {senryu && <SenryuDisplay senryu={senryu} />}
+        {senryu && <SenryuDisplay senryu={senryu} />}
+      </main>
     </div>
   )
 }
