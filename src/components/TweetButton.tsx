@@ -20,7 +20,7 @@ export const TweetButton: React.FC<TweetButtonProps> = ({ senryu }) => {
   }
 
   return (
-    <button onClick={handleTweet}>
+    <button className={styles.button} onClick={handleTweet}>
       ツイート
     </button>
   )

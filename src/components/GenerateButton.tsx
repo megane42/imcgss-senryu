@@ -6,7 +6,7 @@ interface GenerateButtonProps {
 
 export const GenerateButton: React.FC<GenerateButtonProps> = ({ onClick }) => {
   return (
-    <button onClick={onClick}>
+    <button className={styles.button} onClick={onClick}>
       川柳を生成
     </button>
   )
