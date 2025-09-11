@@ -1,11 +1,12 @@
 import { allSenryuWords } from "@/lib/constants/allSenryuWords";
+import { delimiter } from "@/lib/constants/delimiter";
 import { buildSenryu } from "@/lib/core/buildSenryu";
 import { calculateTotalMora } from "@/lib/core/calculateTotalMora";
 import { isCompleteSenryu } from "@/lib/core/isCompleteSenryu";
 import { shuffle } from "@/lib/utils/shuffle";
 import type { Senryu, SenryuWord } from "@/lib/types/senryu";
 
-const isOverload = (senryu: Senryu): boolean => {
+const isOverCapacity = (senryu: Senryu): boolean => {
   return (
     calculateTotalMora(senryu.upperPart) > 5 ||
     calculateTotalMora(senryu.middlePart) > 7 ||
@@ -19,10 +20,12 @@ export const generateSenryu = (): Senryu => {
 
     for (const currentSenryuWord of shuffle(allSenryuWords)) {
       candidates.push(currentSenryuWord)
+      candidates.push(delimiter)
       const senryu = buildSenryu(candidates)
 
-      if (isOverload(senryu)) {
-        candidates.pop()
+      if (isOverCapacity(senryu)) {
+        candidates.pop() // pop delimiter
+        candidates.pop() // pop currentSenryuWord
         continue
       }
 

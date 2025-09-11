@@ -50,3 +50,10 @@
 .line:nth-child(3) {
   align-self: flex-end;
 }
+
+.delimiter {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background: transparent;
+}

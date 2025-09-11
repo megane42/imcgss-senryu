@@ -3,18 +3,21 @@ import { loadSenryu } from '@/lib/core/loadSenryu';
 
 describe('loadSenryu', () => {
   it('should load senryu from multiple IDs', () => {
-    const result = loadSenryu(['i74', 'i44', 'c1']);
+    const result = loadSenryu(['i144', 'd1', 'i142', 'd1', 'i100', 'd1', 'i60', 'd1']);
 
     expect(result.upperPart).toEqual([
-      { word: "佐久間", mora: 3 },
-      { word: "まゆ", mora: 2 }
+      { word: "星", mora: 2 },
+      { word: "輝子", mora: 3 }
     ]);
     expect(result.middlePart).toEqual([
-      { word: "神崎", mora: 4 },
-      { word: "蘭子", mora: 3 }
+      { word: "ヘレン", mora: 3 },
+      { word: "", mora: 0 },
+      { word: "鷹富士", mora: 4 },
     ]);
     expect(result.lowerPart).toEqual([
-      { word: "かわいいね", mora: 5 }
+      { word: "茄子", mora: 2 },
+      { word: "", mora: 0 },
+      { word: "ケイト", mora: 3 },
     ]);
   });
 

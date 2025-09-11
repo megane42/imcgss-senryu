@@ -1,4 +1,5 @@
 import { calculateTotalMora } from "@/lib/core/calculateTotalMora";
+import { strip } from "@/lib/utils/strip";
 import type { Senryu, SenryuWord } from "@/lib/types/senryu";
 
 export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
@@ -21,9 +22,9 @@ export const buildSenryu = (senryuWords: SenryuWord[]): Senryu => {
   }
 
   return {
-    upperPart,
-    middlePart,
-    lowerPart,
+    upperPart: strip(upperPart),
+    middlePart: strip(middlePart),
+    lowerPart: strip(lowerPart),
     ids: senryuWords.map(word => word.id),
   }
 }
