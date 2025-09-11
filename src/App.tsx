@@ -14,10 +14,10 @@ function App() {
       </header>
       <main className={styles.main}>
         <div className={styles.senryuCardContainer}>
-          <SenryuCard 
-            senryu={senryu} 
-            error={error} 
-            onPush={handleGenerateSenryu} 
+          <SenryuCard
+            senryu={senryu}
+            error={error}
+            onPush={handleGenerateSenryu}
           />
         </div>
         <div className={styles.tweetButtonContainer}>
