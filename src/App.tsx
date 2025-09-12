@@ -36,7 +36,7 @@ function App() {
     }, 250)
   }
 
-  useEffect(loadSenryuFromUrl, [])
+  useEffect(loadSenryuFromUrl, [setSenryu, setError])
 
   return (
     <div className={styles.container}>
