@@ -13,7 +13,7 @@ export const TweetButton: React.FC<TweetButtonProps> = ({ senryu }) => {
 
   const handleTweet = () => {
     const encoded = encodeIds(senryu.ids)
-    const url = `${window.location.origin}?q=${encoded}`
+    const url = `${window.location.origin}/imcgss-senryu/?q=${encoded}`
     const text = `${formatSenryuPart(senryu.upperPart)}\n${formatSenryuPart(senryu.middlePart)}\n${formatSenryuPart(senryu.lowerPart)}`
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
     window.open(tweetUrl, '_blank')
