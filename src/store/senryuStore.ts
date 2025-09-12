@@ -5,12 +5,14 @@ interface State {
   senryu: Senryu | null
   error: string | null
   generateButtonFadingOut: boolean
+  senryuCardFadingIn: boolean
 }
 
 interface Action {
   setSenryu: (senryu: Senryu) => void
   setError: (error: string) => void
   setGenerateButtonFadingOut: (isFadingOut: boolean) => void
+  setSenryuCardFadingIn: (isFadingIn: boolean) => void
 }
 
 type Store = State & Action
@@ -20,6 +22,7 @@ export const useStore = create<Store>((set) => ({
   senryu: null,
   error: null,
   generateButtonFadingOut: false,
+  senryuCardFadingIn: false,
 
   // Actions
   setSenryu: (senryu: Senryu) => {
@@ -30,5 +33,8 @@ export const useStore = create<Store>((set) => ({
   },
   setGenerateButtonFadingOut: (isFadingOut: boolean) => {
     set({ generateButtonFadingOut: isFadingOut })
+  },
+  setSenryuCardFadingIn: (isFadingIn: boolean) => {
+    set({ senryuCardFadingIn: isFadingIn })
   },
 }))

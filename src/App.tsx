@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { Logo } from '@/components/Logo'
 import { SenryuCard } from '@/components/SenryuCard'
 import { TweetButton } from '@/components/TweetButton'
@@ -11,9 +11,9 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, generateButtonFadingOut, setSenryu, setError, setGenerateButtonFadingOut } = useStore()
+  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, setSenryu, setError, setGenerateButtonFadingOut, setSenryuCardFadingIn } = useStore()
 
-  const loadSenryuFromUrl = () => {
+  const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
     const encodedIds = urlParams.get('q')
 
@@ -22,6 +22,11 @@ function App() {
         const idArray = decodeIds(encodedIds)
         const loadedSenryu = loadSenryu(idArray)
         setSenryu(loadedSenryu)
+
+        // 川柳カードのフェードインを開始し、アニメーションが終わるのを待つ
+        setSenryuCardFadingIn(true)
+        await new Promise(resolve => setTimeout(resolve, 250))
+
       } catch (err) {
         if (err instanceof LoadSenryuError) {
           console.error(err.message)
@@ -31,17 +36,23 @@ function App() {
         }
       }
     }
-  }
+  }, [setSenryu, setError, setSenryuCardFadingIn])
 
-  const onGenerate = (senryu: Senryu) => {
+  const onGenerate = async (senryu: Senryu) => {
+    // 川柳生成ボタンのフェードアウトを開始し、アニメーションが終わるのを待つ
     setGenerateButtonFadingOut(true)
-    setTimeout(() => {
-      setGenerateButtonFadingOut(false)
-      setSenryu(senryu)
-    }, 250)
+    await new Promise(resolve => setTimeout(resolve, 250))
+
+    setSenryu(senryu)
+
+    // 川柳カードのフェードインを開始し、アニメーションが終わるのを待つ
+    setSenryuCardFadingIn(true)
+    await new Promise(resolve => setTimeout(resolve, 250))
   }
 
-  useEffect(loadSenryuFromUrl, [setSenryu, setError])
+  useEffect(() => {
+    loadSenryuFromUrl()
+  }, [loadSenryuFromUrl])
 
   return (
     <div className={styles.container}>
@@ -49,7 +60,7 @@ function App() {
         <Logo />
       </header>
       <main className={styles.main}>
-        <div className={styles.senryuCardContainer}>
+        <div className={`${styles.senryuCardContainer} ${senryuCardFadingIn ? styles.senryuCardFadeIn : ''}`}>
           {senryu && <SenryuCard senryu={senryu} />}
         </div>
         <div className={`${styles.generateButtonContainer} ${generateButtonFadingOut ? styles.generateButtonFadeOut : ''}`}>
