@@ -6,7 +6,7 @@ import { useStore } from '@/store/senryuStore'
 import styles from './App.module.css'
 import { ErrorMessage } from './components/ErrorMessage'
 import { GenerateButton } from './components/GenerateButton'
-import { loadSenryu } from './lib/core/loadSenryu'
+import { loadSenryu, LoadSenryuError } from './lib/core/loadSenryu'
 import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
@@ -23,7 +23,12 @@ function App() {
         const loadedSenryu = loadSenryu(idArray)
         setSenryu(loadedSenryu)
       } catch (err) {
-        setError('川柳の読み込みに失敗しました')
+        if (err instanceof LoadSenryuError) {
+          console.error(err.message)
+          setError('川柳の読み込みに失敗しました')
+        } else {
+          throw err
+        }
       }
     }
   }

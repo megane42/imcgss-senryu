@@ -13,16 +13,23 @@ const findSenryuWord = (id: string): SenryuWord | undefined => {
   }
 }
 
+export class LoadSenryuError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'LoadSenryuError';
+  }
+}
+
 export const loadSenryu = (ids: string[]): Senryu => {
   const words = ids.map(id => {
     const found = findSenryuWord(id);
-    if (!found) throw new Error(`SenryuWord with id '${id}' not found`);
+    if (!found) throw new LoadSenryuError(`SenryuWord with id '${id}' not found`);
     return found;
   });
 
   const senryu = buildSenryu(words);
   if (!isCompleteSenryu(senryu)) {
-    throw new Error('Given SenryuWords are not enough to build a valid senryu');
+    throw new LoadSenryuError('Given SenryuWords are not enough to build a valid senryu');
   }
 
   return {
