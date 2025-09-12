@@ -1,24 +1,22 @@
-import { useState } from 'react'
+import { generateSenryu } from '@/lib/core/generateSenryu'
+import { useStore } from '@/store/senryuStore'
 import styles from './GenerateButton.module.css'
 
-interface GenerateButtonProps {
-    onClick: () => void
-}
-
-export const GenerateButton: React.FC<GenerateButtonProps> = ({ onClick }) => {
-  const [isFading, setIsFading] = useState(false)
+export const GenerateButton: React.FC = () => {
+  const { setSenryu, setError } = useStore()
 
   const handleClick = () => {
-    setIsFading(true)
-    setTimeout(() => {
-      onClick()
-      setIsFading(false)
-    }, 500)
+    try {
+      const newSenryu = generateSenryu()
+      setSenryu(newSenryu)
+    } catch (err) {
+      setError('川柳の生成に失敗しました')
+    }
   }
 
   return (
-    <button 
-      className={`${styles.button} ${isFading && styles.fadeOut}`} 
+    <button
+      className={`${styles.button}`}
       onClick={handleClick}
     >
       詠む

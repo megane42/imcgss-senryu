@@ -13,16 +13,3 @@
 .button:hover {
   opacity: 0.8;
 }
-
-.fadeOut {
-  animation: fadeOut .25s ease-out forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
