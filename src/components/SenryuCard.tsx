@@ -1,15 +1,11 @@
-import { ErrorMessage } from '@/components/ErrorMessage'
-import { GenerateButton } from '@/components/GenerateButton'
 import styles from './SenryuCard.module.css'
 import type { Chunk, Senryu } from '@/lib/types/senryu'
 
 interface SenryuCardProps {
-  senryu: Senryu | null
-  error: string | null
-  onPush: () => void
+  senryu: Senryu
 }
 
-export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu, error, onPush }) => {
+export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu }) => {
   const formatSenryuPart = (chunks: Chunk[]) => {
     return chunks.map((chunk: Chunk) => {
       if (chunk.mora === 0) {
@@ -21,22 +17,12 @@ export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu, error, onPush })
   }
 
   return (
-    <>
-      <div className={styles.card}>
-        {!senryu &&
-        <GenerateButton onClick={onPush} />
-        }
-        {error && <ErrorMessage error={error} />}
-        {senryu && (
-          <>
-            <div className={styles.senryuText}>
-              <p className={styles.line}>{formatSenryuPart(senryu.upperPart)}</p>
-              <p className={styles.line}>{formatSenryuPart(senryu.middlePart)}</p>
-              <p className={styles.line}>{formatSenryuPart(senryu.lowerPart)}</p>
-            </div>
-          </>
-        )}
+    <div className={styles.card}>
+      <div className={styles.senryuText}>
+        <p className={styles.line}>{formatSenryuPart(senryu.upperPart)}</p>
+        <p className={styles.line}>{formatSenryuPart(senryu.middlePart)}</p>
+        <p className={styles.line}>{formatSenryuPart(senryu.lowerPart)}</p>
       </div>
-    </>
+    </div>
   )
 }

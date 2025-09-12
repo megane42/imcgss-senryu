@@ -1,3 +1,15 @@
 .button {
-  /* IMPLEMENTE ME */
+  width: 300px;
+  background: #000;
+  border-style: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  color: #fff;
+  padding: 0.8em;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.button:hover {
+  opacity: 0.8;
 }

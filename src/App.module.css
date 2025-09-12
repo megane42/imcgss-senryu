@@ -27,6 +27,18 @@ body {
     justify-content: center;
 }
 
+.generateButtonContainer {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.errorMessageContainer {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
 .tweetButtonContainer {
     margin-bottom: 40px;
     display: flex;
