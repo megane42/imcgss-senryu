@@ -11,7 +11,7 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, setSenryu, setError, setGenerateButtonFadingOut, setSenryuCardFadingIn } = useStore()
+  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startSenryuCardFadeIn } = useStore()
 
   const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -23,8 +23,8 @@ function App() {
         const loadedSenryu = loadSenryu(idArray)
         setSenryu(loadedSenryu)
 
-        // 川柳カードのフェードインを開始し、アニメーションが終わるのを待つ
-        setSenryuCardFadingIn(true)
+        // Start senryu card fade in, then wait for the animation to complete
+        startSenryuCardFadeIn()
         await new Promise(resolve => setTimeout(resolve, 250))
 
       } catch (err) {
@@ -36,17 +36,17 @@ function App() {
         }
       }
     }
-  }, [setSenryu, setError, setSenryuCardFadingIn])
+  }, [setSenryu, setError, startSenryuCardFadeIn])
 
   const onGenerate = async (senryu: Senryu) => {
-    // 川柳生成ボタンのフェードアウトを開始し、アニメーションが終わるのを待つ
-    setGenerateButtonFadingOut(true)
+    // Start generate button fade out, then wait for the animation to complete
+    startGenerateButtonFadeOut()
     await new Promise(resolve => setTimeout(resolve, 250))
 
     setSenryu(senryu)
 
-    // 川柳カードのフェードインを開始し、アニメーションが終わるのを待つ
-    setSenryuCardFadingIn(true)
+    // Start senryu card fade in, then wait for the animation to complete
+    startSenryuCardFadeIn()
     await new Promise(resolve => setTimeout(resolve, 250))
   }
 
