@@ -25,7 +25,7 @@ function App() {
 
         // Start senryu card fade in, then wait for the animation to complete
         startSenryuCardFadeIn()
-        await new Promise(resolve => setTimeout(resolve, 250))
+        await new Promise(resolve => setTimeout(resolve, 500))
 
       } catch (err) {
         if (err instanceof LoadSenryuError) {
@@ -41,13 +41,13 @@ function App() {
   const onGenerate = async (senryu: Senryu) => {
     // Start generate button fade out, then wait for the animation to complete
     startGenerateButtonFadeOut()
-    await new Promise(resolve => setTimeout(resolve, 250))
+    await new Promise(resolve => setTimeout(resolve, 500))
 
     setSenryu(senryu)
 
     // Start senryu card fade in, then wait for the animation to complete
     startSenryuCardFadeIn()
-    await new Promise(resolve => setTimeout(resolve, 250))
+    await new Promise(resolve => setTimeout(resolve, 500))
   }
 
   useEffect(() => {
