@@ -1,22 +1,20 @@
 import { generateSenryu } from '@/lib/core/generateSenryu'
-import { useStore } from '@/store/senryuStore'
 import styles from './GenerateButton.module.css'
+import type { Senryu } from '@/lib/types/senryu'
 
-export const GenerateButton: React.FC = () => {
-  const { setSenryu, setError } = useStore()
+interface GenerateButtonProps {
+  onGenerate: (senryu: Senryu) => void
+}
 
+export const GenerateButton: React.FC<GenerateButtonProps> = ({ onGenerate }) => {
   const handleClick = () => {
-    try {
-      const newSenryu = generateSenryu()
-      setSenryu(newSenryu)
-    } catch (err) {
-      setError('川柳の生成に失敗しました')
-    }
+    const newSenryu = generateSenryu()
+    onGenerate(newSenryu)
   }
 
   return (
     <button
-      className={`${styles.button}`}
+      className={styles.button}
       onClick={handleClick}
     >
       詠む

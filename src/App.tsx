@@ -8,9 +8,10 @@ import { ErrorMessage } from './components/ErrorMessage'
 import { GenerateButton } from './components/GenerateButton'
 import { loadSenryu } from './lib/core/loadSenryu'
 import { decodeIds } from './lib/utils/decodeIds'
+import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, setSenryu, setError } = useStore()
+  const { senryu, error, generateButtonFadingOut, setSenryu, setError, setGenerateButtonFadingOut } = useStore()
 
   const loadSenryuFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -27,6 +28,14 @@ function App() {
     }
   }
 
+  const onGenerate = (senryu: Senryu) => {
+    setGenerateButtonFadingOut(true)
+    setTimeout(() => {
+      setGenerateButtonFadingOut(false)
+      setSenryu(senryu)
+    }, 250)
+  }
+
   useEffect(loadSenryuFromUrl, [])
 
   return (
@@ -38,8 +47,8 @@ function App() {
         <div className={styles.senryuCardContainer}>
           {senryu && <SenryuCard senryu={senryu} />}
         </div>
-        <div className={styles.generateButtonContainer}>
-          {!senryu && <GenerateButton />}
+        <div className={`${styles.generateButtonContainer} ${generateButtonFadingOut ? styles.generateButtonFadeOut : ''}`}>
+          {!senryu && <GenerateButton onGenerate={onGenerate} />}
         </div>
         <div className={styles.errorMessageContainer}>
           {error && <ErrorMessage error={error} />}
