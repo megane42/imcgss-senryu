@@ -25,6 +25,7 @@ body {
     flex: 1;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .senryuCardContainer {
@@ -33,6 +34,7 @@ body {
     justify-content: center;
     opacity: 0;
     transform: translateY(10px);
+    width: 100%;
 }
 
 .senryuCardFadeIn {
@@ -91,7 +93,7 @@ body {
 }
 
 .tweetButtonContainer {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     opacity: 0;
@@ -111,4 +113,12 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.otherSenryuButtonContainer {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
 }

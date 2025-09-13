@@ -9,6 +9,7 @@ interface State {
   senryuCardFadingIn: boolean
   tweetButtonFadingIn: boolean
   selectedSenryuIndex: number
+  isLoadedFromUrl: boolean
 }
 
 interface Action {
@@ -19,6 +20,7 @@ interface Action {
   startSenryuCardFadeIn: () => void
   startTweetButtonFadeIn: () => void
   setSelectedSenryuIndex: (index: number) => void
+  setIsLoadedFromUrl: (isLoaded: boolean) => void
 }
 
 type Store = State & Action
@@ -32,6 +34,7 @@ export const useStore = create<Store>((set) => ({
   senryuCardFadingIn: false,
   tweetButtonFadingIn: false,
   selectedSenryuIndex: 0,
+  isLoadedFromUrl: false,
 
   // Actions
   setSenryus: (senryus: Senryu[]) => {
@@ -54,5 +57,8 @@ export const useStore = create<Store>((set) => ({
   },
   setSelectedSenryuIndex: (index: number) => {
     set({ selectedSenryuIndex: index })
+  },
+  setIsLoadedFromUrl: (isLoaded: boolean) => {
+    set({ isLoadedFromUrl: isLoaded })
   },
 }))
