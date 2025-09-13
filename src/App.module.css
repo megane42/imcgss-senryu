@@ -48,11 +48,33 @@ body {
     margin-bottom: 8px;
     display: flex;
     justify-content: center;
-    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.generateButtonFadeIn {
+    animation: generateButtonFadeIn 0.5s ease-in-out forwards;
 }
 
 .generateButtonFadeOut {
-    opacity: 0;
+    animation: generateButtonFadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes generateButtonFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes generateButtonFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .errorMessageContainer {

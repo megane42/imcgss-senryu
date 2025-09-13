@@ -11,7 +11,7 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, tweetButtonFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startSenryuCardFadeIn, startTweetButtonFadeIn } = useStore()
+  const { senryu, error, generateButtonFadingOut, generateButtonFadingIn, senryuCardFadingIn, tweetButtonFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startGenerateButtonFadeIn, startSenryuCardFadeIn, startTweetButtonFadeIn } = useStore()
 
   const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -59,8 +59,12 @@ function App() {
   }
 
   useEffect(() => {
-    loadSenryuFromUrl()
-  }, [loadSenryuFromUrl])
+    loadSenryuFromUrl()  
+    // Start generate button fade in on initial load if no senryu is loaded
+    if (!senryu) {
+      startGenerateButtonFadeIn()
+    }
+  }, [loadSenryuFromUrl, senryu, startGenerateButtonFadeIn])
 
   return (
     <div className={styles.container}>
@@ -71,7 +75,7 @@ function App() {
         <div className={`${styles.senryuCardContainer} ${senryuCardFadingIn ? styles.senryuCardFadeIn : ''}`}>
           {senryu && <SenryuCard senryu={senryu} />}
         </div>
-        <div className={`${styles.generateButtonContainer} ${generateButtonFadingOut ? styles.generateButtonFadeOut : ''}`}>
+        <div className={`${styles.generateButtonContainer} ${generateButtonFadingIn ? styles.generateButtonFadeIn : ''} ${generateButtonFadingOut ? styles.generateButtonFadeOut : ''}`}>
           {!senryu && <GenerateButton onGenerate={onGenerate} />}
         </div>
         <div className={styles.errorMessageContainer}>
