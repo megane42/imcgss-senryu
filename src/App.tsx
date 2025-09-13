@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from 'react'
+import { Footer } from '@/components/Footer'
 import { Logo } from '@/components/Logo'
 import { SenryuCardCarousel } from '@/components/SenryuCardCarousel'
 import { TweetButton } from '@/components/TweetButton'
@@ -72,8 +73,6 @@ function App() {
         <Logo />
       </header>
       <main className={styles.main}>
-
-
         <div className={`${styles.senryuCardContainer} ${senryuCardFadingIn ? styles.senryuCardFadeIn : ''}`}>
           {senryus && <SenryuCardCarousel senryus={senryus} onSelect={setSelectedSenryuIndex} />}
         </div>
@@ -87,6 +86,7 @@ function App() {
           {senryus && <TweetButton senryu={senryus[selectedSenryuIndex]} />}
         </div>
       </main>
+      <Footer />
     </div>
   )
 }
