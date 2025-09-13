@@ -7,11 +7,11 @@ interface SenryuCardProps {
 
 export const SenryuCard: React.FC<SenryuCardProps> = ({ senryu }) => {
   const formatSenryuPart = (chunks: Chunk[]) => {
-    return chunks.map((chunk: Chunk) => {
+    return chunks.map((chunk: Chunk, index: number) => {
       if (chunk.mora === 0) {
-        return (<span className={styles.delimiter}></span>)
+        return (<span key={index} className={styles.delimiter}></span>)
       } else {
-        return (<span className={styles.word}>{chunk.word}</span>)
+        return (<span key={index} className={styles.word}>{chunk.word}</span>)
       }
     })
   }
