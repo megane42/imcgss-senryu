@@ -2,37 +2,40 @@ import { create } from 'zustand'
 import type { Senryu } from '@/lib/types/senryu'
 
 interface State {
-  senryu: Senryu | null
+  senryus: Senryu[] | null
   error: string | null
   generateButtonFadingOut: boolean
   generateButtonFadingIn: boolean
   senryuCardFadingIn: boolean
   tweetButtonFadingIn: boolean
+  selectedSenryuIndex: number
 }
 
 interface Action {
-  setSenryu: (senryu: Senryu) => void
+  setSenryus: (senryus: Senryu[]) => void
   setError: (error: string) => void
   startGenerateButtonFadeOut: () => void
   startGenerateButtonFadeIn: () => void
   startSenryuCardFadeIn: () => void
   startTweetButtonFadeIn: () => void
+  setSelectedSenryuIndex: (index: number) => void
 }
 
 type Store = State & Action
 
 export const useStore = create<Store>((set) => ({
   // State
-  senryu: null,
+  senryus: null,
   error: null,
   generateButtonFadingOut: false,
   generateButtonFadingIn: false,
   senryuCardFadingIn: false,
   tweetButtonFadingIn: false,
+  selectedSenryuIndex: 0,
 
   // Actions
-  setSenryu: (senryu: Senryu) => {
-    set({ senryu, error: null })
+  setSenryus: (senryus: Senryu[]) => {
+    set({ senryus, error: null })
   },
   setError: (error: string) => {
     set({ error })
@@ -48,5 +51,8 @@ export const useStore = create<Store>((set) => ({
   },
   startTweetButtonFadeIn: () => {
     set({ tweetButtonFadingIn: true })
+  },
+  setSelectedSenryuIndex: (index: number) => {
+    set({ selectedSenryuIndex: index })
   },
 }))

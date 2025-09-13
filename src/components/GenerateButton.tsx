@@ -3,13 +3,13 @@ import styles from './GenerateButton.module.css'
 import type { Senryu } from '@/lib/types/senryu'
 
 interface GenerateButtonProps {
-  onGenerate: (senryu: Senryu) => void
+  onGenerate: (senryus: Senryu[]) => void
 }
 
 export const GenerateButton: React.FC<GenerateButtonProps> = ({ onGenerate }) => {
   const handleClick = () => {
-    const newSenryu = generateSenryu()
-    onGenerate(newSenryu)
+    const senryus = Array.from({ length: 10 }, () => generateSenryu())
+    onGenerate(senryus)
   }
 
   return (

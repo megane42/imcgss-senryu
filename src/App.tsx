@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { Logo } from '@/components/Logo'
-import { SenryuCard } from '@/components/SenryuCard'
+import { SenryuCardCarousel } from '@/components/SenryuCardCarousel'
 import { TweetButton } from '@/components/TweetButton'
 import { useStore } from '@/store/senryuStore'
 import styles from './App.module.css'
@@ -11,7 +11,7 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, generateButtonFadingOut, generateButtonFadingIn, senryuCardFadingIn, tweetButtonFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startGenerateButtonFadeIn, startSenryuCardFadeIn, startTweetButtonFadeIn } = useStore()
+  const { senryus, error, generateButtonFadingOut, generateButtonFadingIn, senryuCardFadingIn, tweetButtonFadingIn, selectedSenryuIndex, setSenryus, setError, startGenerateButtonFadeOut, startGenerateButtonFadeIn, startSenryuCardFadeIn, startTweetButtonFadeIn, setSelectedSenryuIndex } = useStore()
 
   const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -21,12 +21,12 @@ function App() {
       try {
         const idArray = decodeIds(encodedIds)
         const loadedSenryu = loadSenryu(idArray)
-        setSenryu(loadedSenryu)
+        setSenryus([loadedSenryu])
 
         // Start senryu card fade in, and wait for the animation
         startSenryuCardFadeIn()
         await new Promise(resolve => setTimeout(resolve, 250))
-        
+
         // Start tweet button fade in, and wait for the animation
         startTweetButtonFadeIn()
         await new Promise(resolve => setTimeout(resolve, 500))
@@ -40,31 +40,31 @@ function App() {
         }
       }
     }
-  }, [setSenryu, setError, startSenryuCardFadeIn, startTweetButtonFadeIn])
+  }, [setSenryus, setError, startSenryuCardFadeIn, startTweetButtonFadeIn])
 
-  const onGenerate = async (senryu: Senryu) => {
+  const onGenerate = async (senryus: Senryu[]) => {
     // Start generate button fade out, and wait for the animation
     startGenerateButtonFadeOut()
     await new Promise(resolve => setTimeout(resolve, 500))
 
-    setSenryu(senryu)
+    setSenryus(senryus)
 
     // Start senryu card fade in, and wait for the animation
     startSenryuCardFadeIn()
     await new Promise(resolve => setTimeout(resolve, 250))
-    
+
     // Start tweet button fade in, and wait for the animation
     startTweetButtonFadeIn()
     await new Promise(resolve => setTimeout(resolve, 500))
   }
 
   useEffect(() => {
-    loadSenryuFromUrl()  
+    loadSenryuFromUrl()
     // Start generate button fade in on initial load if no senryu is loaded
-    if (!senryu) {
+    if (!senryus) {
       startGenerateButtonFadeIn()
     }
-  }, [loadSenryuFromUrl, senryu, startGenerateButtonFadeIn])
+  }, [loadSenryuFromUrl, senryus, startGenerateButtonFadeIn])
 
   return (
     <div className={styles.container}>
@@ -72,17 +72,19 @@ function App() {
         <Logo />
       </header>
       <main className={styles.main}>
+
+
         <div className={`${styles.senryuCardContainer} ${senryuCardFadingIn ? styles.senryuCardFadeIn : ''}`}>
-          {senryu && <SenryuCard senryu={senryu} />}
+          {senryus && <SenryuCardCarousel senryus={senryus} onSelect={setSelectedSenryuIndex} />}
         </div>
         <div className={`${styles.generateButtonContainer} ${generateButtonFadingIn ? styles.generateButtonFadeIn : ''} ${generateButtonFadingOut ? styles.generateButtonFadeOut : ''}`}>
-          {!senryu && <GenerateButton onGenerate={onGenerate} />}
+          {!senryus && <GenerateButton onGenerate={onGenerate} />}
         </div>
         <div className={styles.errorMessageContainer}>
           {error && <ErrorMessage error={error} />}
         </div>
         <div className={`${styles.tweetButtonContainer} ${tweetButtonFadingIn ? styles.tweetButtonFadeIn : ''}`}>
-          {senryu && <TweetButton senryu={senryu} />}
+          {senryus && <TweetButton senryu={senryus[selectedSenryuIndex]} />}
         </div>
       </main>
     </div>

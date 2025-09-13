@@ -1,0 +1,68 @@
+.carouselWrapper {
+  --senryu-card-size: 300px;
+  --slide-spacing: 30px;
+  width: 100%;
+  max-width: calc(var(--senryu-card-size) + var(--slide-spacing) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.embla {
+  overflow: hidden;
+  margin: auto;
+  width: 100%;
+  padding: 20px 0;
+}
+
+@media (min-width: 768px) {
+  .embla {
+    mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%
+    );
+  }
+}
+
+.embla__container {
+  display: flex;
+  gap: 4rem;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  padding: 0 var(--slide-spacing);
+  min-width: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dot:hover {
+  background-color: #9ca3af;
+}
+
+.dotActive {
+  background-color: #000;
+}
+
+.dotActive:hover {
+  background-color: #000;
+}
