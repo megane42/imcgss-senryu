@@ -11,7 +11,7 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startSenryuCardFadeIn } = useStore()
+  const { senryu, error, generateButtonFadingOut, senryuCardFadingIn, tweetButtonFadingIn, setSenryu, setError, startGenerateButtonFadeOut, startSenryuCardFadeIn, startTweetButtonFadeIn } = useStore()
 
   const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -23,8 +23,12 @@ function App() {
         const loadedSenryu = loadSenryu(idArray)
         setSenryu(loadedSenryu)
 
-        // Start senryu card fade in, then wait for the animation to complete
+        // Start senryu card fade in, and wait for the animation
         startSenryuCardFadeIn()
+        await new Promise(resolve => setTimeout(resolve, 250))
+        
+        // Start tweet button fade in, and wait for the animation
+        startTweetButtonFadeIn()
         await new Promise(resolve => setTimeout(resolve, 500))
 
       } catch (err) {
@@ -36,17 +40,21 @@ function App() {
         }
       }
     }
-  }, [setSenryu, setError, startSenryuCardFadeIn])
+  }, [setSenryu, setError, startSenryuCardFadeIn, startTweetButtonFadeIn])
 
   const onGenerate = async (senryu: Senryu) => {
-    // Start generate button fade out, then wait for the animation to complete
+    // Start generate button fade out, and wait for the animation
     startGenerateButtonFadeOut()
     await new Promise(resolve => setTimeout(resolve, 500))
 
     setSenryu(senryu)
 
-    // Start senryu card fade in, then wait for the animation to complete
+    // Start senryu card fade in, and wait for the animation
     startSenryuCardFadeIn()
+    await new Promise(resolve => setTimeout(resolve, 250))
+    
+    // Start tweet button fade in, and wait for the animation
+    startTweetButtonFadeIn()
     await new Promise(resolve => setTimeout(resolve, 500))
   }
 
@@ -69,7 +77,7 @@ function App() {
         <div className={styles.errorMessageContainer}>
           {error && <ErrorMessage error={error} />}
         </div>
-        <div className={styles.tweetButtonContainer}>
+        <div className={`${styles.tweetButtonContainer} ${tweetButtonFadingIn ? styles.tweetButtonFadeIn : ''}`}>
           {senryu && <TweetButton senryu={senryu} />}
         </div>
       </main>
