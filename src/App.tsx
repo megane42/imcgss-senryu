@@ -12,7 +12,22 @@ import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
 
 function App() {
-  const { senryus, error, generateButtonFadingOut, generateButtonFadingIn, senryuCardFadingIn, tweetButtonFadingIn, selectedSenryuIndex, setSenryus, setError, startGenerateButtonFadeOut, startGenerateButtonFadeIn, startSenryuCardFadeIn, startTweetButtonFadeIn, setSelectedSenryuIndex } = useStore()
+  const {
+    senryus,
+    error,
+    generateButtonFadingOut,
+    generateButtonFadingIn,
+    senryuCardFadingIn,
+    tweetButtonFadingIn,
+    selectedSenryuIndex,
+    setSenryus,
+    setError,
+    startGenerateButtonFadeOut,
+    startGenerateButtonFadeIn,
+    startSenryuCardFadeIn,
+    startTweetButtonFadeIn,
+    setSelectedSenryuIndex,
+  } = useStore()
 
   const loadSenryuFromUrl = useCallback(async () => {
     const urlParams = new URLSearchParams(window.location.search)
