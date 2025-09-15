@@ -27,6 +27,27 @@ export const SenryuCardCarousel: React.FC<SenryuCardCarouselProps> = ({ senryus,
     }
   }, [emblaApi, onSelect])
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!emblaApi) return
+      switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault()
+        emblaApi.scrollPrev()
+        break
+      case 'ArrowRight':
+        event.preventDefault()
+        emblaApi.scrollNext()
+        break
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    // cleanup
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [emblaApi])
+
   return (
     <div className={styles.carouselWrapper}>
       <div className={styles.embla} ref={emblaRef}>
