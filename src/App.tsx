@@ -1,17 +1,17 @@
 import { useEffect, useCallback } from 'react'
 import { Footer } from '@/components/Footer'
 import { Logo } from '@/components/Logo'
+import { OtherSenryuButton } from '@/components/OtherSenryuButton'
 import { SenryuCardCarousel } from '@/components/SenryuCardCarousel'
 import { TweetButton } from '@/components/TweetButton'
-import { OtherSenryuButton } from '@/components/OtherSenryuButton'
 import { useStore } from '@/store/senryuStore'
 import styles from './App.module.css'
 import { ErrorMessage } from './components/ErrorMessage'
 import { GenerateButton } from './components/GenerateButton'
+import { SenryuCard } from './components/SenryuCard'
 import { loadSenryu, LoadSenryuError } from './lib/core/loadSenryu'
 import { decodeIds } from './lib/utils/decodeIds'
 import type { Senryu } from '@/lib/types/senryu'
-import { SenryuCard } from './components/SenryuCard'
 
 function App() {
   const {

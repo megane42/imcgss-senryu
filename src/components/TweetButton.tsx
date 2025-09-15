@@ -18,6 +18,7 @@ export const TweetButton: React.FC<TweetButtonProps> = ({ senryu }) => {
       '.˚⊹⁺✮••━━━━━••✮⁺⊹˚.',
     ])[0]
     const url = `${window.location.origin}${import.meta.env.BASE_URL}?q=${encoded}`
+    // eslint-disable-next-line no-irregular-whitespace
     const text = `　${formatSenryuPart(senryu.upperPart)}\n　　　${formatSenryuPart(senryu.middlePart)}\n　　　　　${formatSenryuPart(senryu.lowerPart)}`
     const hashtags = '#デレマス川柳'
     const allText = boundary + "\n" + text + "\n" + boundary + "\n\n" + hashtags + "\n" + url
