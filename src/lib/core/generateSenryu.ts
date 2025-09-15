@@ -14,6 +14,14 @@ const isOverCapacity = (senryu: Senryu): boolean => {
   )
 }
 
+const isInvalidSenryu = (senryu: Senryu): boolean => {
+  return (
+    (senryu.upperPart[0] && senryu.upperPart[0].word === "すき") ||
+    (senryu.middlePart[0] && senryu.middlePart[0].word === "すき") ||
+    (senryu.lowerPart[0] && senryu.lowerPart[0].word === "すき")
+  )
+}
+
 export const generateSenryu = (): Senryu => {
   do {
     const candidates: SenryuWord[] = []
@@ -24,6 +32,12 @@ export const generateSenryu = (): Senryu => {
       const senryu = buildSenryu(candidates)
 
       if (isOverCapacity(senryu)) {
+        candidates.pop() // pop delimiter
+        candidates.pop() // pop currentSenryuWord
+        continue
+      }
+
+      if (isInvalidSenryu(senryu)) {
         candidates.pop() // pop delimiter
         candidates.pop() // pop currentSenryuWord
         continue
