@@ -22,6 +22,12 @@ const isInvalidSenryu = (senryu: Senryu): boolean => {
   )
 }
 
+const isSukiSenryu = (senryu: Senryu): boolean => {
+  return senryu.upperPart.some(chunk => chunk.word === "すき") ||
+    senryu.middlePart.some(chunk => chunk.word === "すき") ||
+    senryu.lowerPart.some(chunk => chunk.word === "すき")
+}
+
 export const generateSenryu = (): Senryu => {
   do {
     const candidates: SenryuWord[] = []
@@ -41,6 +47,13 @@ export const generateSenryu = (): Senryu => {
         candidates.pop() // pop delimiter
         candidates.pop() // pop currentSenryuWord
         continue
+      }
+
+      // The word "すき" is too OP so we need to limit its appearance
+      if (isSukiSenryu(senryu)) {
+        if (Math.random() < 0.7) {
+          break
+        }
       }
 
       if (isCompleteSenryu(senryu)) {
