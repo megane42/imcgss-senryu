@@ -11,12 +11,12 @@ describe('loadSenryu', () => {
     ]);
     expect(result.middlePart).toEqual([
       { word: "ヘレン", mora: 3 },
-      { word: "", mora: 0 },
+      { word: " ", mora: 0 },
       { word: "鷹富士", mora: 4 },
     ]);
     expect(result.lowerPart).toEqual([
       { word: "茄子", mora: 2 },
-      { word: "", mora: 0 },
+      { word: " ", mora: 0 },
       { word: "ケイト", mora: 3 },
     ]);
   });
